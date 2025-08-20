@@ -25,3 +25,4 @@
 5. **Run the project**
    ```bash
    nodemon server.js
+   ```
