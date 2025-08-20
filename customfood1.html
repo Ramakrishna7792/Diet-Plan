@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track and Thrive - Diet Plan</title>
+    <link rel="stylesheet" href="stylecustom.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="navbar.js"></script>
+</head>
+<body>
+
+    <!-- <nav>
+        <div class="menu">
+          <div class="logo">
+            <a href="#">Track and Thrive</a>
+          </div>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Diet Plan</a></li>
+            <li><a href="#">Track</a></li>
+            <li><a href="#">Outline</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+    </nav> -->
+
+    <div class="custom-food-container">
+        <h2>Enter Custom Food Items</h2>
+
+        <!-- Custom Breakfast Food -->
+        <div class="custom-food-section">
+            <h3>Breakfast</h3>
+            <input type="text" id="customBreakfastFood" placeholder="Food Name">
+            <input type="number" id="customBreakfastCalories" placeholder="Calories">
+            <button onclick="addCustomFood('Breakfast')">Add</button>
+            <div id="customBreakfastList" class="custom-food-items"></div>
+        </div>
+
+        <!-- Custom Lunch Food -->
+        <div class="custom-food-section">
+            <h3>Lunch</h3>
+            <input type="text" id="customLunchFood" placeholder="Food Name">
+            <input type="number" id="customLunchCalories" placeholder="Calories">
+            <button onclick="addCustomFood('Lunch')">Add</button>
+            <div id="customLunchList" class="custom-food-items"></div>
+        </div>
+
+        <!-- Custom Dinner Food -->
+        <div class="custom-food-section">
+            <h3>Dinner</h3>
+            <input type="text" id="customDinnerFood" placeholder="Food Name">
+            <input type="number" id="customDinnerCalories" placeholder="Calories">
+            <button onclick="addCustomFood('Dinner')">Add</button>
+            <div id="customDinnerList" class="custom-food-items"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize custom food items in localStorage if they don't exist
+        const customFoodItems = JSON.parse(localStorage.getItem('customFoodItems')) || {
+            Breakfast: [],
+            Lunch: [],
+            Dinner: []
+        };
+
+        // Function to save custom food items to localStorage
+        function saveCustomFoodToLocalStorage() {
+            localStorage.setItem('customFoodItems', JSON.stringify(customFoodItems));
+        }
+
+        // Function to render custom food items in the DOM
+        function renderCustomFoodItems() {
+            ['Breakfast', 'Lunch', 'Dinner'].forEach(category => {
+                const foodList = document.getElementById(`custom${category}List`);
+                foodList.innerHTML = ''; // Clear existing items
+                customFoodItems[category].forEach((item, index) => {
+                    const foodItem = document.createElement('div');
+                    foodItem.classList.add('custom-food-item');
+                    foodItem.innerHTML = `
+                        ${item.name} (${item.calories} cal)
+                        <button onclick="selectCustomFood('${item.name}', ${item.calories}, '${category}')">Select</button>
+                        <button class="remove-btn" onclick="removeCustomFood('${category}', ${index})">Remove</button>`;
+                        
+                    foodList.appendChild(foodItem);
+                    
+                });
+            });
+        }
+
+        //new added only one
+
+        // Function to render selected items
+        function renderSelectedItems() {
+            selectedList.innerHTML = '';  // Clear the current list
+            selectedItems.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.category}: ${item.name} (${item.calories} cal)`;
+                
+                // Add a remove button for each item
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.classList.add('remove-btn');
+                removeBtn.onclick = () => removeItem(index);  // Remove item on click
+
+                listItem.appendChild(removeBtn);
+                selectedList.appendChild(listItem);
+            });
+        }
+
+
+        // Function to add custom food items
+        function addCustomFood(category) {
+            let foodName, calories;
+
+            if (category === 'Breakfast') {
+                foodName = document.getElementById('customBreakfastFood').value;
+                calories = parseInt(document.getElementById('customBreakfastCalories').value);
+            } else if (category === 'Lunch') {
+                foodName = document.getElementById('customLunchFood').value;
+                calories = parseInt(document.getElementById('customLunchCalories').value);
+            } else if (category === 'Dinner') {
+                foodName = document.getElementById('customDinnerFood').value;
+                calories = parseInt(document.getElementById('customDinnerCalories').value);
+            }
+
+            if (foodName && !isNaN(calories)) {
+                customFoodItems[category].push({ name: foodName, calories });
+                saveCustomFoodToLocalStorage(); // Save updated food items to localStorage
+                renderCustomFoodItems(); // Re-render the custom food items
+
+                // Clear input fields after adding food
+                document.getElementById(`custom${category}Food`).value = '';
+                document.getElementById(`custom${category}Calories`).value = '';
+            } else {
+                alert('Please provide valid food name and calorie count.');
+            }
+        }
+
+        // Function to remove custom food items
+        function removeCustomFood(category, index) {
+            customFoodItems[category].splice(index, 1); // Remove the item from the array
+            saveCustomFoodToLocalStorage(); // Save updated list to localStorage
+            renderCustomFoodItems(); // Re-render the list
+        }
+
+        // Function to select custom food items (add to selected items list)
+        function selectCustomFood(name, calories, category) {
+            // You can add functionality here for adding the selected item to another list
+            alert(`${name} added to your list!`);
+        }
+
+        // Initial render of custom food items when the page loads
+        renderCustomFoodItems();
+
+    </script>
+</body>
+</html>

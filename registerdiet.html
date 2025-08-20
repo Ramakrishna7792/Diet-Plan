@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan Calculator</title>
+    <script src="navbar.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            /* background-color: #f4f4f4; */
+            background-image: linear-gradient(45deg, #2d78db, #60bef8, #d88cff);
+            animation: change11 5s infinite linear;
+            background-size: 600% 600%;
+        }
+        
+        @keyframes change11{
+            0%{
+                background-position: 0 85%;
+            }
+            50%{
+                background-position: 100% 20%;
+            }
+            100%{
+                background-position: 0 85%;
+            }
+        }
+
+        .container {
+            margin-top: 45%;
+            background: #dbe2bd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            border: 2px solid black;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #111010;
+            color: #f7f3f3;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #880618;
+        }
+        .reset-button {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #FF0000;
+            color: #fff;
+            font-size: 14px;
+        }
+        .reset-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h2>Diet Plan Calculator</h2>
+        <form id="dietPlanForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required readonly>
+                <p>(Email is filled only after login)</p>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" name="height" required>
+            </div>
+            <div class="form-group">
+                <label for="goalType">Goal:</label>
+                <select id="goalType" name="goalType" required>
+                    <option value="">Select</option>
+                    <option value="lose">Lose Weight</option>
+                    <option value="gain">Gain Weight</option>
+                    <option value="maintain">Maintain Weight</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="currentWeight">Current Weight (kg):</label>
+                <input type="number" id="currentWeight" name="currentWeight" required>
+            </div>
+            <div class="form-group">
+                <label for="goalWeight">Goal Weight (kg):</label>
+                <input type="number" id="goalWeight" name="goalWeight" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="duration">Diet Plan Duration:</label>
+                <select id="duration" name="duration" required>
+                    <option value="">Select</option>
+                    <option value="1">1 Month</option>
+                    <option value="2">2 Months</option>
+                    <option value="3">3 Months</option>
+                    <option value="4">4 Months</option>
+                    <option value="5">5 Months</option>
+                    <option value="6">6 Months</option>
+                    <option value="7">7 Months</option>
+                    <option value="8">8 Months</option>
+                    <option value="9">9 Months</option>
+                    <option value="10">10 Months</option>
+                    <option value="11">11 Months</option>
+                    <option value="12">12 Months</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="submitForm()">Submit</button>
+                <button type="button" onclick="resetForm()">Reset</button>
+                <button id="alreadyRegistered" class="btn" onclick="redirectToDietPlan()">If Registered, click here</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // This function runs when the page is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email'); // Get the email from the URL
+
+            if (email) {
+                const emailInput = document.getElementById('email');
+                emailInput.value = email; // Set the email in the input field
+                emailInput.setAttribute('readonly', true); // Make it non-editable
+            }
+        });
+
+        // Submit Form Function
+        function submitForm() {
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            const height = parseInt(document.getElementById('height').value);
+            const currentWeight = parseFloat(document.getElementById('currentWeight').value);
+            const goalWeight = parseFloat(document.getElementById('goalWeight').value);
+            const gender = document.getElementById('gender').value;
+            const goalType = document.getElementById('goalType').value;
+            const duration = parseInt(document.getElementById('duration').value);
+
+            
+
+            
+
+
+            if (!email || !name || isNaN(age) || isNaN(height) || isNaN(currentWeight) || isNaN(goalWeight) || !gender || !goalType || isNaN(duration)) {
+                alert('Please fill out all fields correctly.');
+                return;
+            }
+
+            // Check if the email is already registered in the database
+            fetch(`http://localhost:3000/check-email?email=${email}`, {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.exists) {
+                    alert('This email is already registered. You can delete the existing data using the reset button.');
+                } else {
+                    const weightDifference = Math.abs(goalWeight - currentWeight);
+
+
+                    if (goalType=="gain"){
+                        if (weightDifference > 3 && duration === 1) {
+                            alert('The time period is not sufficient for the selected weight difference.');
+                            return;
+                        }
+
+                        if (weightDifference > 5 && duration === 2) {
+                            alert('The time period is not sufficient for the selected weight difference.');
+                            return;
+                        }
+
+                        if (weightDifference > 8 && duration === 3) {
+                            alert('The time period is not sufficient for the selected weight difference.');
+                            return;
+                        }
+                        if(weightDifference > 11 && duration === 4){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 13 && duration === 5){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 17 && duration === 6){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 20 && duration === 7){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 23 && duration === 8){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 26 && duration === 9){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 29 && duration === 10){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 31 && duration === 11){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 35 && duration === 12){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                    }
+                    
+                    if(goalType=="loss"){
+                        
+                        if(weightDifference > 4 && duration === 1){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 8 && duration === 2){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 11 && duration === 3){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 15 && duration === 4){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 18 && duration === 5){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 21 && duration === 6){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 25 && duration === 7){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 29 && duration === 8){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 32 && duration === 9){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 36 && duration === 10){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 40 && duration === 11){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                        if(weightDifference > 44 && duration === 12){
+                            alert('The time period is not suffiecient for selected weight difference');
+                            return;
+                        }
+                    }
+
+                    const calorieChangePerDay = (weightDifference * 7700) / (duration * 30);
+                    const maintenanceCalories = gender === 'male' 
+                        ? 10 * currentWeight + 6.25 * height - 5 * age + 5
+                        : 10 * currentWeight + 6.25 * height - 5 * age - 161;
+
+                    let targetCalories = goalType === 'lose' 
+                        ? maintenanceCalories - calorieChangePerDay
+                        : maintenanceCalories + calorieChangePerDay;
+
+                    targetCalories = Math.round(targetCalories);
+
+                    alert(`Hello ${name}, your target daily calorie intake is approximately ${Math.round(targetCalories)} calories.`);
+
+                    window.location.href = `index2.html?email=${email}`;
+
+                    fetch('http://localhost:3000/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            email, name, age, height, currentWeight, goalWeight, gender, goalType, duration, targetCalories
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+            })
+            .catch(error => console.error('Error checking email:', error));
+        }
+
+        function redirectToDietPlan() {
+            const email = document.getElementById('email').value; // Get the email value
+
+            if (!email) {
+                alert('Email is required!');
+                window.location.href="index5.html";
+                return;
+            }
+
+            // Redirect to registration.html with email as a query parameter
+            window.location.href = `index2.html?email=${encodeURIComponent(email)}`;
+        }
+
+        // Reset Form Function
+        function resetForm() {
+            const email = document.getElementById('email').value;
+
+            if (!email) {
+                alert('Please provide the email to reset the data.');
+                return;
+            }
+
+            fetch(`http://localhost:3000/reset?email=${email}`, {
+                method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Data successfully reset.');
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
+
+
+
+    <!-- <script>
+        function calculateCalories() {
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            const height = parseInt(document.getElementById('height').value);
+            const currentWeight = parseFloat(document.getElementById('currentWeight').value);
+            const goalWeight = parseFloat(document.getElementById('goalWeight').value);
+            const gender = document.getElementById('gender').value;
+            const goalType = document.getElementById('goalType').value;
+            const duration = parseInt(document.getElementById('duration').value);
+
+            if (!name || !age || !height || !currentWeight || !goalWeight || !gender || !goalType || !duration) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            const weightDifference = Math.abs(goalWeight - currentWeight);
+
+            // Validate duration based on weight difference
+            if (weightDifference > 7 && duration === 1) {
+                alert('The time period is not sufficient for the selected weight difference.');
+                return;
+            }
+
+            if (weightDifference > 15 && duration === 2) {
+                alert('The time period is not sufficient for the selected weight difference.');
+                return;
+            }
+
+            if (weightDifference > 23 && duration === 3) {
+                alert('The time period is not sufficient for the selected weight difference.');
+                return;
+            }
+
+            const calorieChangePerDay = (weightDifference * 7700) / (duration * 30);
+            const maintenanceCalories = gender === 'male' 
+                ? 10 * currentWeight + 6.25 * height - 5 * age + 5
+                : 10 * currentWeight + 6.25 * height - 5 * age - 161;
+
+            const targetCalories = goalType === 'lose' 
+                ? maintenanceCalories - calorieChangePerDay
+                : maintenanceCalories + calorieChangePerDay;
+
+            alert(`Hello ${name}, your target daily calorie intake is approximately ${Math.round(targetCalories)} calories.`);
+        }
+    </script> -->
+
+    <!-- function resetForm() {
+        if (confirm('Are you sure you want to reset the form and delete all records?')) {
+            fetch('/reset', 
+              { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('All data has been reset.');
+                        document.getElementById('dietPlanForm').reset();
+                    } else {
+                        alert('Error resetting data.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    } -->
+
+    <!-- document.getElementById('email').addEventListener('blur', function () {
+        const email = this.value;
+        if (email) {
+            fetch(`/fetch?email=${encodeURIComponent(email)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data) {
+                        const userData = data.data;
+                        document.getElementById('name').value = userData.name || '';
+                        document.getElementById('age').value = userData.age || '';
+                        document.getElementById('height').value = userData.height || '';
+                        document.getElementById('currentWeight').value = userData.current_weight || '';
+                        document.getElementById('goalWeight').value = userData.goal_weight || '';
+                        document.getElementById('gender').value = userData.gender || '';
+                        document.getElementById('goalType').value = userData.goal_type || '';
+                        document.getElementById('duration').value = userData.duration || '';
+                    } else if (!data.success && data.message === 'No data found for this email') {
+                        // Clear the form if no data is found
+                        document.getElementById('dietPlanForm').reset();
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }); -->

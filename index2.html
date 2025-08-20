@@ -1,0 +1,720 @@
+<!-- Weight loss -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track and Thrive - Diet Plan</title>
+    <link rel="stylesheet" href="styleindex2.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="navbar.js"></script>
+</head>
+<body>
+
+    <!-- <nav>
+        <div class="menu">
+          <div class="logo">
+            <a href="#">Track and Thrive</a>
+          </div>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Diet Plan</a></li>
+            <li><a href="track.html" id="trackbtn">Track</a></li>
+            <li><a href="#">Outline</a></li>
+            <li><a href="index5.html">Register</a></li>
+          </ul>
+        </div>
+    </nav> -->
+
+    <!-- Header Section -->
+    <div class="header">
+        <div class="title">CHOOSE YOUR MEAL</div>
+        <div class="popup" id="popupMessage"></div>
+
+        
+        <div class="date">
+            <label for="selectedDate">Select Date:</label>
+            <input type="date" id="selectedDate">
+        </div>
+        
+    </div>
+
+    <!-- Tabs for Breakfast, Lunch, and Dinner -->
+    <div class="tab-container">
+        <div class="tab active" onclick="showMealSection('breakfast')">Breakfast</div>
+        <div class="tab" onclick="showMealSection('lunch')">Lunch</div>
+        <div class="tab" onclick="showMealSection('dinner')">Dinner</div>
+    </div>
+
+    <!-- Breakfast Section -->
+    <div id="breakfast" class="meal-section active">
+        <div class="food-container">
+           
+            <div class="food-card"><img src="bimages/poha.jpg" alt="Poha"><p>Poha<br>1 cup <br>(100g cooked)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Poha', 120, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/oats-upma.jpg" alt="Oats Upma"><p>Oats Upma<br>3/4 cup <br>(100g cooked)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Oats Upma',150, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/moong-dal-chilla.jpeg" alt="Moong Dal Chilla"><p>Moong Dal Chilla<br>1 medium-sized chilla(80g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Moong Dal Chilla',100, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/Oats-Porridge-with-Berries.jpg" alt="Oats Porridge with Berries"><p>Oats Porridge with Berries<br>1 bowl(150g cooked oats+50g berries)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Oats Porridge with Berries',150, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/dalia-khichdi.jpg" alt="Vegetable Dalia"><p>Vegetable Dalia<br>1 cup <br>(100g cooked)</p><p class="calories">130 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Dalia',130, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/ragi-dosa.jpg" alt="Ragi Dosa"><p>Ragi Dosa<br>1 dosa (60g batter, cooked)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Ragi Dosa',120, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/sprouted_moong.jpg" alt="Sprouts Salad"><p>Sprouts Salad<br>1 small bowl(75g mixed sprouts)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Sprouts Salad',90, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/methi-thepala.jpg" alt="Methi Thepla (No Oil)"><p>Methi Thepla <br>(No Oil)<br>1 thepla(60g)</p><p class="calories">110 kcal</p>
+                <button class="btn1" onclick="addFood('Methi Thepla',110, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/Besan-Cheela.jpg" alt="Vegetable and Besan Cheela"><p>Vegetable and Besan Cheela<br>1 medium-sized cheela(90g)</p><p class="calories">130 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable and Besan Cheela',130, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/veg-soup.jpg" alt="Mixed Vegetable Soup "><p>Mixed Vegetable <br>Soup<br>1 cup(200ml)</p><p class="calories">80 kcal</p>
+                <button class="btn1" onclick="addFood('Mixed Vegetable Soup',80, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/multigrain-dosa-with-chutney.jpg" alt="Multigrain Dosa with Chutney"><p>Multigrain Dosa with Chutney<br>1 dosa(60g)+1 tbsp chutney</p><p class="calories">140 kcal</p>
+                <button class="btn1" onclick="addFood('Multigrain Dosa with Chutney',140, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/Apple-Cinnamon.jpg" alt="Apple Cinnamon Oats"><p>Apple Cinnamon Oats<br>1bowl <br>(150g cooked oats with apple slices)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Apple Cinnamon Oats',150, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/ragi-malt.jpg" alt="Ragi Porridge"><p>Ragi Porridge<br>1 bowl <br>(100ml porridge)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Ragi Porridge',120, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/rava-Upma.jpg" alt="Vegetable Rava Upma "><p>Vegetable Rava Upma<br>3/4 cup <br>(100g cooked)</p><p class="calories">140 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Rava Upma',140, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/suji-chilla.jpg" alt="Sooji Chilla with Vegetables"><p>Sooji Chilla with Vegetables<br>1 medium-sized chilla(90g)</p><p class="calories">130 kcal</p>
+                <button class="btn1" onclick="addFood('Sooji Chilla with Vegetables',130, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/veg-sand.jpg" alt="Vegetable Sandwich (Whole Wheat, No Cheese)"><p>Vegetable Sandwich<br>2slices whole-wheat bread(50g)with veggie</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Sandwich',150, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/quinoa-upma.jpg" alt="Quinoa Upma"><p>Quinoa Upma<br>3/4 cup <br>(100g cooked)</p><p class="calories">130 kcal</p>
+                <button class="btn1" onclick="addFood('Quinoa Upma',130, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/palak-paratha.jpg" alt="Palak Paratha"><p>Palak Paratha <br>(No Oil)<br>1 paratha (70g)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Palak Paratha',120, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/peanut-cuc.jpg" alt="Cucumber and Peanut Salad"><p>Cucumber and Peanut Salad <br>1 small bowl(100g cucumber+15g peanuts)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Cucumber and Peanut Salad',100, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/pumpkin-soup.jpg" alt="Pumpkin Soup"><p>Pumpkin Soup<br>1 cup <br>(200ml)</p><p class="calories">70 kcal</p>
+                <button class="btn1" onclick="addFood('Pumpkin Soup',70, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/masala-omelette.jpg" alt="Masala Omelette (Egg Whites)"><p>Masala Omelette(Egg Whites)<br>2 egg whites with veggies(60g total)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Masala Omelette',90, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/sprouted_moong.jpg" alt="Boiled Moong Sprouts with Lemon and Chaat Masala"><p>Boiled Moong Sprouts with Lemon and Chaat Masala<br>1 small bowl(75g sprouts)</p><p class="calories">80 kcal</p>
+                <button class="btn1" onclick="addFood('Boiled Moong Sprouts with Lemon and Chaat Masala',80, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/vegetable_pancake.jpg" alt="Vegetable Pancakes with Besan"><p>Vegetable Pancakes with Besan<br>1 medium-sized pancake(100g)</p><p class="calories">140 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Pancakes with Besan',140, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/idiyappam.jpg" alt="Idiyappam with Steamed Vegetables "><p>2 medium Idiyappam(100g) with Steamed Veggies (50g)</p><p class="calories">110 kcal</p>
+                <button class="btn1" onclick="addFood('Idiyappam with Steamed Vegetables',110, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/vegetable-idli.jpg" alt="Vegetable Idl"><p>Vegetable Idli<br>2 small idlis <br>(60g each)</p><p class="calories">110 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Idli',110, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/miso-soup.jpg" alt="Miso Soup with Tofu and Spinach"><p>Miso Soup with Tofu and Spinach<br>1 small bowl(200ml)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Miso Soup with Tofu and Spinach',90, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/paneer-bhurji.jpg" alt="Paneer Bhurji (Low-Fat Paneer)"><p>Paneer Bhurji(Low-Fat Paneer)<br>1/4 cup(50g paneer)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Paneer Bhurji (Low-Fat Paneer)',100, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/millet-pongal.jpg" alt="Millet Pongal"><p>Millet Pongal<br>1 small bowl(100g cooked millet)</p><p class="calories">130 kcal</p>
+                <button class="btn1" onclick="addFood('Millet Pongal',130, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/cabbage-paratha.JPG" alt="Cabbage Paratha (No Oil)"><p>Cabbage Paratha (No Oil)<br>1 medium-sized paratha (80g)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Cabbage Paratha',120, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/spinach-and-apple-breakfast-smoothie.jpg" alt="Green Smoothie with Spinach and Apple"><p>Green Smoothie with Spinach and Apple<br>1 glass(250ml)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Green Smoothie with Spinach and Apple',120, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/coconut-chutney.JPG" alt="Coconut Chutney with Steamed Vegetables"><p>Coconut Chutney with Steamed Vegetables<br>2tbsp chutney+50g steamed veggies</p><p class="calories">110 kcal</p>
+                <button class="btn1" onclick="addFood('Coconut Chutney with Steamed Vegetables',110, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/rice-puttu.jpg" alt="Red Rice Puttu with Banana"><p>Red Rice Puttu with Banana<br>1 medium puttu (100g)+1/2 banana(50g)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Red Rice Puttu with Banana',120, 'Breakfast')">Select</button></div>
+
+            <div class="food-card"><img src="bimages/sattu-drink.jpg" alt="Sattu Drink with Water and Lemon"><p>Sattu Drink with Water and Lemon<br>1 glass(250ml)</p><p class="calories">80 kcal</p>
+                <button class="btn1" onclick="addFood('Sattu Drink with Water and Lemon',80, 'Breakfast')">Select</button>
+            </div>
+            <div class="food-card"><img src="bimages/methi_dhokla.jpg" alt="Vegetable Methi Dhokla"><p>Vegetable Methi Dhokla<br>2small pieces(60g total)</p><p class="calories">110 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Methi Dhokla',110, 'Breakfast')">Select</button>
+            </div>
+            <!-- Add 20 more breakfast items as per the same format -->
+        </div>
+    </div>
+
+    <!-- Lunch Section -->
+    <div id="lunch" class="meal-section">
+        <div class="food-container">
+            <div class="food-card"><img src="limages/Mixed Vegetable Sabzi with 1 Roti.jpg" alt="Mixed Vegetable Sabzi with 1 Roti"><p>Mixed Vegetable Sabzi(1 bowl 150g) with 1 Roti(40gm)</p><p class="calories">180 kcal</p>
+                <button class="btn1" onclick="addFood('Mixed Vegetable Sabzi with 1 Roti',180, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Moong Dal with Cabbage Sabzi.jpg" alt="Moong Dal with Cabbage Sabzi"><p>Moong Dal with Cabbage Sabzi<br>1 bowl(150g)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Moong Dal with Cabbage Sabzi',150, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Vegetable Khichdi (Brown Rice-Based).jpg" alt="Vegetable Khichdi (Brown Rice-Based)"><p>Vegetable Khichdi (Brown Rice-Based)<br>1 bowl(200g)</p><p class="calories">250 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Khichdi (Brown Rice-Based)',250, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Dal Palak.jpg" alt="Dal Palak (Lentils with Spinach)"><p>Dal Palak (Lentils with Spinach)<br>1 bowl (200g)</p><p class="calories">200 kcal</p>
+                <button class="btn1" onclick="addFood('Dal Palak (Lentils with Spinach)',200, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Plain Dosa with Sambar.jpg" alt="Plain Dosa with Sambar"><p>Plain Dosa with Sambar<br>1 dosa(80g)+1 small bowl(100ml)of sambar</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Plain Dosa with Sambar',150, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Bajra (Pearl Millet) Roti with Subzi.jpg" alt="Bajra (Pearl Millet) Roti with Subzi"><p>Bajra Roti with Subzi<br>1 bajraroti(50g)+1 bowl(150g)of subzi</p><p class="calories">210 kcal</p>
+                <button class="btn1" onclick="addFood('Bajra Roti with Subzi',210, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Quinoa Upma with Vegetables.jpg" alt="Quinoa Upma with Vegetables"><p>Quinoa Upma with Vegetables<br>1 bowl (200g)</p><p class="calories">180 kcal</p>
+                <button class="btn1" onclick="addFood('Quinoa Upma with Vegetables',180, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Sprouts Salad.jpg" alt="Sprouts Salad"><p>Sprouts Salad<br>1 bowl (100g)</p><p class="calories"> 100 kcal</p>
+                <button class="btn1" onclick="addFood('Sprouts Salad',100, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Curd Rice (Low-Fat Curd).jpg" alt="Curd Rice (Low-Fat Curd)"><p>Curd Rice<br>1 bowl(200g cooked rice+50g curd)</p><p class="calories"> 220 kcal</p>
+                <button class="btn1" onclick="addFood('Curd Rice ',220, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Palak Paneer (Light) with 1 Roti.jpeg" alt="Palak Paneer (Light) with 1 Roti"><p>Palak Paneer with 1Roti<br>1 roti(40g)+1 bowl(150g)palak paneer</p><p class="calories">200 kcal</p>
+                <button class="btn1" onclick="addFood('Palak Paneer (Light) with 1 Roti',200, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Vegetable Pulao (Brown Rice-Based).jpg" alt="Vegetable Pulao (Brown Rice-Based)"><p>Vegetable Pulao(Brown Rice-Based)<br>1 bowl(200g)</p><p class="calories"> 250 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Pulao (Brown Rice-Based)',250, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Zucchini Sabzi with 1 Roti.jpg" alt="Zucchini Sabzi with 1 Roti"><p>Zucchini Sabzi with 1 Roti<br>1  roti(40g)+1 bowl(150g)zucchini sabzi</p><p class="calories">170 kcal</p>
+                <button class="btn1" onclick="addFood('Zucchini Sabzi with 1 Roti',170, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Mixed-dal-soup.jpg" alt="Mixed Dal Soup with Small Salad"><p>Mixed Dal Soup with Salad<br>1 bowl(200ml) soup <br>+salad(50g)</p><p class="calories"> 160 kcal</p>
+                <button class="btn1" onclick="addFood('Mixed Dal Soup with Small Salad',160, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Ragi Roti with Tomato Chutney.jpg" alt="Ragi Roti with Tomato Chutney"><p>Ragi Roti with Tomato Chutney <br>1roti(50g)+2 tbsp(30g)chutney</p><p class="calories">180 kcal</p>
+                <button class="btn1" onclick="addFood('Ragi Roti with Tomato Chutney',180, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Sambar Rice.jpg" alt="Sambar Rice (Low Oil, Brown Rice)"><p>Sambar Rice (Low Oil, Brown Rice) <br>1 bowl(200g)</p><p class="calories"> 220 kcal</p>
+                <button class="btn1" onclick="addFood('Sambar Rice (Low Oil, Brown Rice)',220, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Stuffed Gourd with 1 Roti.jpg" alt="Stuffed Gourd with 1 Roti"><p>Stuffed Gourd with 1 Roti<br>1 roti(40g)+1 bowl(150g)stuffed gourd</p><p class="calories"> 190 kcal</p>
+                <button class="btn1" onclick="addFood('Stuffed Gourd with 1 Roti',190, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Masoor Dal with Carrot Sabzi.jpg" alt="Masoor Dal with Carrot Sabzi"><p>Masoor Dal with Carrot Sabzi<br>1 bowl(150g)</p><p class="calories"> 180 kcal</p>
+                <button class="btn1" onclick="addFood('Masoor Dal with Carrot Sabzi',180, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Cabbage and Pea Stir Fry.jpg" alt="Cabbage and Pea Stir Fry"><p>Cabbage and Pea Stir Fry<br>1 bowl(150g)</p><p class="calories"> 120 kcal</p>
+                <button class="btn1" onclick="addFood('Cabbage and Pea Stir Fry',120, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Low-Calorie Kadhi with Rice.jpg" alt="Low-Calorie Kadhi with Rice"><p>Low-Calorie Kadhi with Rice<br>1 bowl(100g rice+100ml kadhi)</p><p class="calories"> 230 kcal</p>
+                <button class="btn1" onclick="addFood('Low-Calorie Kadhi with Rice',230, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Stuffed Paratha (Without Oil) with Cucumber Raita.jpg" alt="Stuffed Paratha (Without Oil) with Cucumber Raita"><p>Stuffed Paratha with Cucumber Raita<br>1 paratha(60g)+50ml raita</p><p class="calories">200 kcal</p>
+                <button class="btn1" onclick="addFood('Stuffed Paratha with Cucumber Raita',200, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Lauki-sabzi-with-roti.jpg" alt="Lauki (Bottle Gourd) Sabzi with 1 Roti"><p>Lauki Sabzi with 1 Roti <br>1 roti(40g)+1 bowl(150g)lauki sabzi</p><p class="calories">160 kcal</p>
+                <button class="btn1" onclick="addFood('Lauki Sabzi with 1 Roti',160, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Methi Thepla with Mint Chutney.jpg" alt="Methi Thepla with Mint Chutney"><p>Methi Thepla with Mint Chutney<br>1 thepla(50g)+2 tbs(30g)chutney</p><p class="calories">200 kcal</p>
+                <button class="btn1" onclick="addFood('Methi Thepla with Mint Chutney',200, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Moong-dal-Khichdi.jpg" alt="Moong Dal Khichdi (Brown Rice)"><p>Moong Dal Khichdi (Brown Rice)<br>1 bowl(200g)</p><p class="calories">240 kcal</p>
+                <button class="btn1" onclick="addFood('Moong Dal Khichdi (Brown Rice)',240, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Tofu Stir Fry with Mixed Vegetables.jpg" alt="Tofu Stir Fry with Mixed Vegetables"><p>Tofu Stir Fry with Mixed Vegetables <br>1 bowl(150g)</p><p class="calories"> 180 kcal</p>
+                <button class="btn1" onclick="addFood('Tofu Stir Fry with Mixed Vegetables',180, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Cauliflower and Pea Curry with 1 Roti.jpg" alt="Cauliflower and Pea Curry with 1 Roti"><p>Cauliflower and Pea Curry with 1 Roti<br>1 roti(40g)+1 bowl(150g)curry</p><p class="calories"> 190 kcal</p>
+                <button class="btn1" onclick="addFood('Cauliflower and Pea Curry with 1 Roti',190, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Tomato Rice (Brown Rice) with Low-Fat Curd.jpg" alt="Tomato Rice (Brown Rice) with Low-Fat Curd"><p>Tomato Rice (Brown Rice) with Curd<br>1 bowl(200g rice+50g curd)</p><p class="calories">230 kcal</p>
+                <button class="btn1" onclick="addFood('Tomato Rice (Brown Rice) with Curd',230, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Green Gram Soup with Vegetable Salad.jpg" alt="Green Gram Soup with Vegetable Salad"><p>Green Gram Soup with Veg Salad<br>1 bowl(200ml soup)+50g salad</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Green Gram Soup with Veg Salad',150, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Beetroot Poriyal with 1 Roti.jpg" alt="Beetroot Poriyal with 1 Roti"><p>Beetroot Poriyal with 1 Roti <br>1 roti(40g)+1 bowl(150g)poriyal</p><p class="calories">160 kcal</p>
+                <button class="btn1" onclick="addFood('Beetroot Poriyal with 1 Roti',160, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Plain Dal Tadka with Bhindi Fry (Minimal Oil).jpg" alt="Plain Dal Tadka with Bhindi Fry (Minimal Oil)"><p>Plain Dal Tadka with Bhindi Fry<br>1 bowl(150ml tadka)+50g fry</p><p class="calories">220 kcal</p>
+                <button class="btn1" onclick="addFood('Plain Dal Tadka with Bhindi Fry',220, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Sprouts Curry with Steamed Rice.jpg" alt="Sprouts Curry with Steamed Rice"><p>Sprouts Curry with Steamed Rice<br>1 bowl(100g rice+100g sproutscurry)</p><p class="calories">200 kcal</p>
+                <button class="btn1" onclick="addFood('Sprouts Curry with Steamed Rice',200, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Lauki Chana Dal with Roti.jpg" alt="Lauki Chana Dal with Roti"><p>Lauki Chana Dal with Roti<br>1 roti(40g) +1 bowl(150g)lauki chana dal</p><p class="calories">210 kcal</p>
+                <button class="btn1" onclick="addFood('Lauki Chana Dal with Roti',210, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Rajma Curry (Kidney Beans) with Brown Rice.jpg" alt="Rajma Curry (Kidney Beans) with Brown Rice"><p>Rajma Curry with Brown Rice<br>1 bowl(200g)</p><p class="calories">240 kcal</p>
+                <button class="btn1" onclick="addFood('Rajma Curry with Brown Rice',240, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Pumpkin and Lentil Curry.jpg" alt="Pumpkin and Lentil Curry"><p>Pumpkin and Lentil Curry <br>1 bowl(150g)</p><p class="calories"> 160 kcal</p>
+                <button class="btn1" onclick="addFood('Pumpkin and Lentil Curry',160, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Carrot and Spinach Sabzi with 1 Roti.jpg" alt="Carrot and Spinach Sabzi with 1 Roti"><p>Carrot and Spinach Sabzi with 1 Roti<br>1 roti(40g)+1 bowl(150g)sabzi</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Carrot and Spinach Sabzi with 1 Roti',150, 'Lunch')">Select</button>
+            </div>
+            <div class="food-card"><img src="limages/Green Mung Dal Salad with Cucumber.jpg" alt="Green Mung Dal Salad with Cucumber"><p>Green Mung Dal Salad with Cucumber<br>1 bowl(100g)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Green Mung Dal Salad with Cucumber',120, 'Lunch')">Select</button>
+            </div>      
+            <!-- Add 20 more lunch items as per the same format -->
+        </div>
+    </div>
+
+    <!-- Dinner Section -->
+    <div id="dinner" class="meal-section">
+        <div class="food-container">
+            <div class="food-card"><img src="dimages/Palak Soup.jpeg" alt="Palak Soup"><p>Palak Soup <br>1 medium bowl<br>(250 ml)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Palak Soup',150, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/vegetable soup.webp" alt="Vegetable Soup"><p>Vegetable Soup <br>1 medium bowl <br>(250 ml)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Soup',90,'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/moong-dal-kichdi.jpg" alt="Moong Dal Khichdi"><p>Moong Dal Khichdi <br>1 serving <br>(1 cup 200 g)</p><p class="calories">180 kcal</p>
+                <button class="btn1" onclick="addFood('Moong dal chilla',200, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/Vegetable-stir-fry.jpg" alt="Vegetable Stir-Fry "><p>Vegetable Stir-Fry <br>1 serving <br>(1 cup 200 g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Stir-Fry',100, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/paneer-tikka.jpg" alt="Grilled Paneer"><p>Grilled Paneer <br>5 pieces or 100 g</p><p class="calories">180 kcal</p>
+                <button class="btn1" onclick="addFood('Grilled Paneer',180, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/mixed-dal-soup.jpg" alt="Mixed Dal Soup"><p>Mixed Dal Soup <br>medium bowl<br>(250 ml)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Mixed Dal Soup',150, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/Lauki-sabzi.jpg" alt="Lauki Sabzi "><p>Lauki Sabzi <br>1 serving <br>(1 cup or 200 g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Lauki Sabzi',100, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/methi-thepala.jpg" alt="Methi Thepla"><p>Methi Thepla <br>1 medium-sized thepla(70 g)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Methi Thepla',120, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/palak-paneer-roti.jpg" alt="Palak Paneer"><p>Palak Paneer with 1 Roti <br>(150 g paneer + 1 roti)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Palak Paneer',120, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/veg-salad.jpg" alt="Vegetable Salad"><p>Vegetable Salad <br>1 medium bowl <br>(150 g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Salad',100, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/oats-khichdi.jpg" alt="Oats Khichd"><p>Oats Khichdi <br>1 serving (1 cup 200 g)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Oats Khichdi ',150, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/sprouts-salad.jpg" alt="Sprouts Salad"><p>Sprouts Salad <br>1 medium bowl <br>(150 g)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Sprouts Salad',90, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/stuffed-lauki.jpg" alt="Stuffed Lauki "><p>Stuffed Lauki <br>1 medium piece (200 g)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Stuffed Lauki',120, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/steamed-dhokla.jpeg" alt="Steamed Dhokla"><p>Steamed Dhokla <br>2 pieces (80 g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Steamed Dhokla',100, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/thinda-sabzi.jpeg" alt="Tinda Sabzi"><p>Tinda Sabzi <br>1 serving <br>(1 cup 200 g)</p><p class="calories">80 kcal</p>
+                <button class="btn1" onclick="addFood('Tinda Sabzi',80, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/roti-with-mixed-sabzi.jpg" alt="Roti with Mixed Veg Sabzi"><p>1 Roti(50g) with Mixed Veg Sabzi(200g)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Roti with Mixed Veg Sabzi',150, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/dal-palak.jpg" alt="Dal Palak"><p>Dal Palak <br>1 medium bowl <br>(200 ml)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Dal Palak',120, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/vegetable-dalia.jpg" alt="Vegetable Dalia"><p>Vegetable Dalia <br> 1 serving(1 cup 200 g)</p><p class="calories">140 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Dalia',140, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/Rasam.jpg" alt="Rasam with Vegetables "><p>Rasam with Vegetables <br>1 medium bowl(250 ml)</p><p class="calories">80 kcal</p>
+                <button class="btn1" onclick="addFood('Rasam with Vegetables',80, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/bhindi-masala.jpeg" alt="Bhindi Masala"><p>Bhindi Masala <br>1 serving <br>(1 cup 200 g)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Bhindi Masala',90, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/cauliflower-rice.jpg" alt="Cauliflower Rice"><p>Cauliflower Rice<br>1 serving<br>(1 cup 200 g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Cauliflower Rice',100, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/sambar-rice.jpg" alt="Sambar with Vegetables "><p>Sambar with Vegetables <br>1 medium bowl<br>(250 ml)</p><p class="calories">120 kcal</p>
+                <button class="btn1" onclick="addFood('Sambar with Vegetables',120, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/Kadhi with Steamed Vegetables.jpg" alt="Kadhi with Steamed Vegetables"><p>Kadhi with Steamed Vegetables<br>1 medium bowl<br>(250 ml)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Kadhi with Steamed Vegetables',90, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/cabbage-stir-fry.jpeg" alt="Cabbage Stir-Fry"><p>Cabbage Stir fry <br>1 serving <br>(1 cup 200 g)</p><p class="calories">70 kcal</p>
+                <button class="btn1" onclick="addFood('Cabbage Stir-Fry',70, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/Roti-with-chana-masala.jpeg" alt="Roti with Chana Masala"><p>1 roti(50g)+<br>1 cup chana masala(200 g)</p><p class="calories">140 kcal</p>
+                <button class="btn1" onclick="addFood('Roti with Chana Masala',140, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/zucchini-sabzi.jpg" alt="Zucchini Sabzi"><p>Zucchini Sabzi <br>1 serving <br>(1 cup 200 g)</p><p class="calories">60 kcal</p>
+                <button class="btn1" onclick="addFood('Zucchini Sabzi',60, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/Quinoa Salad.jpeg" alt="Quinoa Salad"><p>Quinoa Salad <br> 1 medium bowl <br>(150 g)</p><p class="calories">150 kcal</p>
+                <button class="btn1" onclick="addFood('Quinoa Salad',150, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/moong-dal-chilla.jpg" alt="Moong Dal Chilla"><p>Moong Dal Chilla<br>2 medium-sized chillas(100 g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Moong Dal Chilla',100, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/vegetable-idli.jpg" alt="Vegetable Idli"><p>Vegetable Idli <br>2 medium-sized idlis <br>(120 g)</p><p class="calories">90 kcal</p>
+                <button class="btn1" onclick="addFood('Vegetable Idli',90, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/Tomato-Shorba.jpeg" alt="Tomato Shorba"><p>Tomato Shorba <br>1 medium bowl <br>(250 ml)</p><p class="calories">80 kcal</p>
+                <button class="btn1" onclick="addFood('Tomato Shorba',80, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/stuffed-capsicum.jpeg" alt="Stuffed Capsicum"><p>Stuffed Capsicum 1 medium piece <br>(200 g)</p><p class="calories">100 kcal</p>
+                <button class="btn1" onclick="addFood('Stuffed Capsicum',100, 'Dinner')">Select</button>
+            </div>
+            <div class="food-card"><img src="dimages/beet-salad.jpeg" alt="Carrot and Beetroot Salad "><p>Carrot and Beetroot Salad<br>1 medium bowl<br>(150 g)</p><p class="calories">60 kcal</p>
+                <button class="btn1" onclick="addFood('Carrot and Beetroot Salad',60, 'Dinner')">Select</button>
+            </div>  
+        </div>
+    </div>
+
+    <div class="selected-items-box">
+        <h2>Selected Items</h2>
+        <ul id="selectedList"></ul>
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <div class="custom-food-container">
+        <h2 style="color: black;">Saved Custom Food</h2>
+
+        <!-- Custom Breakfast Food -->
+        <div class="custom-food-section">
+            <h3>Breakfast</h3>
+            <input type="text" id="customBreakfastFood" placeholder="Food Name">
+            <input type="number" id="customBreakfastCalories" placeholder="Calories">
+            <button onclick="addCustomFood('Breakfast')" id="addbtn">Add</button>
+            <div id="customBreakfastList" class="custom-food-items"></div>
+        </div>
+
+        <!-- Custom Lunch Food -->
+        <div class="custom-food-section">
+            <h3>Lunch</h3>
+            <input type="text" id="customLunchFood" placeholder="Food Name">
+            <input type="number" id="customLunchCalories" placeholder="Calories">
+            <button onclick="addCustomFood('Lunch')" id="addbtn">Add</button>
+            <div id="customLunchList" class="custom-food-items"></div>
+        </div>
+
+        <!-- Custom Dinner Food -->
+        <div class="custom-food-section">
+            <h3>Dinner</h3>
+            <input type="text" id="customDinnerFood" placeholder="Food Name">
+            <input type="number" id="customDinnerCalories" placeholder="Calories">
+            <button onclick="addCustomFood('Dinner')" id="addbtn">Add</button>
+            
+            <ul id="customDinnerList" class="custom-food-items"></div>
+            
+        </div>
+    </div>
+
+
+   
+    <button id="trackBtn" onclick="redirectToTrack()" class="button1">Track</button>
+
+    <div class="fix">
+        <footer>
+            <div class="container3">
+                <div class="footer-content">
+                    <h3 style="margin-right: 110px;">Contact Us</h3>
+                    <p>Email: arjunon1234567@gmail.com</p>
+                    <p>Phone: <br>+91 7897538957</p>
+                    <p>Address:<br>Canara Engineering College</p>
+                </div>
+                <div class="footer-content">
+                    <h3>List Of Sections</h3>
+                     <ul class="list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="index1.html" class="nav-link">Diet plan</a></li>
+                        <li><a href="" class="nav-link">Track</a></li>
+                        <li><a href="" class="nav-link">Outline</a></li>
+                        <li><a href="index4.html" class="nav-link">Register</a></li>
+                     </ul>
+                </div>
+                <div class="footer-content">
+                    <h3>Follow Us</h3>
+                    <ul class="social-icons">
+                     <li><a href=""><i class='bx bxl-facebook-circle'></i></a></li>
+                     <li><a href=""><i class='bx bxl-instagram' ></i></a></li>
+                     <!-- <li><a href=""><i class="fab fa-instagram"></i></a></li> -->
+                     <li><a href=""><i class='bx bxl-linkedin-square' ></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <p> 2024 Team Track And Thrive</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];  // Retrieve from localStorage if available
+        const popupMessage = document.getElementById('popupMessage');
+        const selectedList = document.getElementById('selectedList');
+        const submitBtn = document.getElementById('submitBtn');
+        // const trackBtn = document.getElementById('trackBtn');
+        const selectedDate = document.getElementById('selectedDate');
+
+        function redirectToTrack() {
+            // const email = document.getElementById('email').value; // Get the email value
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email'); 
+
+            if (!email) {
+                alert('Email is required!');
+                window.location.href="index5.html";
+                return;
+            }
+
+            // Redirect to registration.html with email as a query parameter
+            window.location.href = `track.html?email=${encodeURIComponent(email)}`;
+        }
+
+        function showMealSection(meal) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.meal-section').forEach(section => section.classList.remove('active'));
+            
+            document.querySelector(`.tab[onclick="showMealSection('${meal}')"]`).classList.add('active');
+            document.getElementById(meal).classList.add('active');
+        }
+
+        // Function to save selected items to localStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+        }
+
+        // // Function to render selected items
+        // function renderSelectedItems() {
+        //     selectedList.innerHTML = '';  // Clear the current list
+        //     selectedItems.forEach((item, index) => {
+        //         const listItem = document.createElement('li');
+        //         listItem.textContent = `${item.category}: ${item.name} (${item.calories} cal)`;
+                
+        //         // Add a remove button for each item
+        //         const removeBtn = document.createElement('button');
+        //         removeBtn.textContent = 'Remove';
+        //         removeBtn.classList.add('remove-btn');
+        //         removeBtn.onclick = () => removeItem(index);  // Remove item on click
+
+        //         listItem.appendChild(removeBtn);
+        //         selectedList.appendChild(listItem);
+        //     });
+        // }
+
+        // Function to render selected items in the container
+    function renderSelectedItems() {
+        const selectedList = document.getElementById('selectedList');
+        selectedList.innerHTML = ''; // Clear the current list
+        selectedItems.forEach((item, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${item.category}: ${item.name} (${item.calories} cal)`;
+
+            // Add a remove button for each item
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Remove';
+            removeBtn.classList.add('remove-btn');
+            removeBtn.onclick = () => {
+                removeItem(index); // Remove the item on click
+            };
+
+            listItem.appendChild(removeBtn);
+            selectedList.appendChild(listItem);
+        });
+    }
+
+        // Function to remove an item
+        function removeItem(index) {
+            selectedItems.splice(index, 1);  // Remove the item from the array
+            renderSelectedItems();  // Re-render the selected items list
+            saveToLocalStorage();  // Save the updated list to localStorage
+        }
+
+        // Initialize by rendering selected items
+        renderSelectedItems();
+
+        function addFood(name, calories, category) {
+            selectedItems.push({ name, calories, category });
+            renderSelectedItems();
+            saveToLocalStorage();
+        }
+
+        function addCustomFood(category) {
+            let foodName, calories;
+
+            if (category === 'Breakfast') {
+                foodName = document.getElementById('customBreakfastFood').value;
+                calories = parseInt(document.getElementById('customBreakfastCalories').value);
+            } else if (category === 'Lunch') {
+                foodName = document.getElementById('customLunchFood').value;
+                calories = parseInt(document.getElementById('customLunchCalories').value);
+            } else if (category === 'Dinner') {
+                foodName = document.getElementById('customDinnerFood').value;
+                calories = parseInt(document.getElementById('customDinnerCalories').value);
+            }
+
+            if (foodName && !isNaN(calories)) {
+                selectedItems.push({ name: foodName, calories, category });
+                renderSelectedItems();
+                saveToLocalStorage();
+
+                // Display the added custom food item with a select button
+                const foodList = document.getElementById(`custom${category}List`);
+                const foodItem = document.createElement('div');
+                foodItem.classList.add('custom-food-item');
+                foodItem.innerHTML = `${foodName} (${calories} cal) <button onclick="selectCustomFood('${foodName}', ${calories}, '${category}')">Select</button>`;
+                foodList.appendChild(foodItem);
+
+                // Clear input fields after adding the food
+                document.getElementById(`custom${category}Food`).value = '';
+                document.getElementById(`custom${category}Calories`).value = '';
+            } else {
+                showPopup('Please provide valid food name and calorie count.');
+            }
+        }
+
+        function selectCustomFood(name, calories, category) {
+            selectedItems.push({ name, calories, category });
+            renderSelectedItems();
+            saveToLocalStorage();
+        }
+
+        function showPopup(message) {
+            popupMessage.textContent = message;
+            popupMessage.style.display = 'block';
+            setTimeout(() => popupMessage.style.display = 'none', 3000);
+        }
+
+        submitBtn.addEventListener('click', () => {
+            const date = selectedDate.value;
+            if (!date) {
+                showPopup('Please select a date.');
+                return;
+            }
+
+            if (selectedItems.length === 0) {
+                showPopup('No food items selected.');
+                return;
+            }
+
+            // Group food items by category and calculate total calories for each
+            let breakfastCalories = 0;
+            let lunchCalories = 0;
+            let dinnerCalories = 0;
+
+            selectedItems.forEach(item => {
+                if (item.category === 'Breakfast') 
+                    breakfastCalories += item.calories;
+                if (item.category === 'Lunch') 
+                    lunchCalories += item.calories;
+                if (item.category === 'Dinner')
+                    dinnerCalories += item.calories;
+            });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email'); 
+
+            // Save the data to the backend
+            fetch('http://127.0.0.1:3000/save-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email,
+                    date,
+                    breakfast_calories: breakfastCalories,
+                    lunch_calories: lunchCalories,
+                    dinner_calories: dinnerCalories,
+                    selectedItems
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showPopup('Data saved successfully!');
+                    trackBtn.classList.add('active');  // Activate the track button
+                } else {
+                    showPopup('Error saving data.');
+                }
+            })
+            .catch(err => {
+                console.error('Fetch error:', err);
+                showPopup('Error connecting to server.');
+            });
+        });
+
+
+        // Retrieve custom food items from localStorage
+        const customFoodItems = JSON.parse(localStorage.getItem('customFoodItems')) || {
+            Breakfast: [],
+            Lunch: [],
+            Dinner: []
+        };
+
+        // Function to save custom food items to localStorage
+        function saveCustomFoodToLocalStorage() {
+            localStorage.setItem('customFoodItems', JSON.stringify(customFoodItems));
+        }
+
+        // Function to render custom food items
+        function renderCustomFoodItems() {
+            ['Breakfast', 'Lunch', 'Dinner'].forEach(category => {
+                const foodList = document.getElementById(`custom${category}List`);
+                foodList.innerHTML = ''; // Clear existing items
+                customFoodItems[category].forEach((item, index) => {
+                    const foodItem = document.createElement('div');
+                    foodItem.classList.add('custom-food-item');
+                    foodItem.innerHTML = `
+                        ${item.name} (${item.calories} cal)
+                        <button onclick="selectCustomFood('${item.name}', ${item.calories}, '${category}')">Select</button>
+                        <button class="remove-btn" onclick="removeCustomFood('${category}', ${index})">Remove</button>`;
+                    foodList.appendChild(foodItem);
+                });
+            });
+        }
+
+        // Function to add custom food items
+        function addCustomFood(category) {
+            let foodName, calories;
+        
+            if (category === 'Breakfast') {
+                foodName = document.getElementById('customBreakfastFood').value;
+                calories = parseInt(document.getElementById('customBreakfastCalories').value);
+            } else if (category === 'Lunch') {
+                foodName = document.getElementById('customLunchFood').value;
+                calories = parseInt(document.getElementById('customLunchCalories').value);
+            } else if (category === 'Dinner') {
+                foodName = document.getElementById('customDinnerFood').value;
+                calories = parseInt(document.getElementById('customDinnerCalories').value);
+            }
+        
+            if (foodName && !isNaN(calories)) {
+                customFoodItems[category].push({ name: foodName, calories });
+                saveCustomFoodToLocalStorage(); // Save to localStorage
+                renderCustomFoodItems(); // Render updated list
+        
+                // Clear input fields
+                document.getElementById(`custom${category}Food`).value = '';
+                document.getElementById(`custom${category}Calories`).value = '';
+            } else {
+                showPopup('Please provide valid food name and calorie count.');
+            }
+        }
+
+        // Function to remove custom food items
+        function removeCustomFood(category, index) {
+            customFoodItems[category].splice(index, 1); // Remove item from the array
+            saveCustomFoodToLocalStorage(); // Save updated list to localStorage
+            renderCustomFoodItems(); // Re-render list
+        }
+
+        // Render custom food items on page load
+        renderCustomFoodItems();
+
+        // Ensure previously selected items are also rendered on page load
+        renderSelectedItems();
+
+
+    </script>
+
+</body>
+</html>

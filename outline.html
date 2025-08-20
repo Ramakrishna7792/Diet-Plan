@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outline</title>
+    <link rel="stylesheet" href="styleoutline.css"> <!-- Link to the external CSS file -->
+    <script src="navbar.js"></script>
+</head>
+
+<body>
+    <!-- Navbar
+    <div class="navbar-container">
+        <nav id="navbar">
+            <div class="menu">
+                <div class="logo">
+                    <a href="#">Track and Thrive</a>
+                </div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Diet Plan</a></li>
+                    <li><a href="#">Track</a></li>
+                    <li><a href="#">Outline</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div> -->
+
+    <!-- Main Content -->
+    <div class="content-section">
+        <h1>Display of our website</h1>
+    </div>
+
+    <!-- Image Section -->
+    <div class="image-section">
+        <div class="image-container">
+            <div class="image-content">
+                <h3>Home Section</h3>
+                <p>Navigate to the homepage.</p>
+            </div>
+            <img src="Home.png" alt="Home">
+        </div>
+        <div class="image-container">
+            <div class="image-content">
+                <h3>Registration</h3>
+                <p>Sign up to access more features.</p>
+            </div>
+            <img src="register1.jpg" alt="Registration">
+        </div>
+        <div class="image-container">
+            <div class="image-content">
+                <h3>Diet Plan</h3>
+                <p>Discover your personalized diet plan.</p>
+            </div>
+            <img src="diet1.jpg" alt="Diet">
+        </div>
+        <div class="image-container">
+            <div class="image-content">
+                <h3>Track Progress</h3>
+                <p>Monitor your fitness journey.</p>
+            </div>
+            <img src="track1.jpg" alt="Track">
+        </div>
+    </div>
+
+    <section id="feedback1">
+    <div id="feedback-container">
+        <h3 style="text-align: center; color: white;">Please give your valuable Feedback</h3>
+        <textarea id="suggestion" placeholder="Write your suggestion here..."></textarea>
+        <button onclick="sendFeedback()">Send</button>
+    </div>
+    </section>
+
+    <script>
+    function sendFeedback() {
+    const suggestion = document.getElementById('suggestion').value.trim();
+    const urlParams = new URLSearchParams(window.location.search);
+    const userEmail = urlParams.get('email'); // Extract email from the URL.
+
+    if (!userEmail) {
+        alert('Please login to send suggestions.');
+        return;
+    }
+
+    if (suggestion === '') {
+        alert('Please write a suggestion before sending.');
+        return;
+    }
+
+    // Send feedback to the server
+    fetch('http://localhost:3000/feedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: userEmail,
+            suggestion: suggestion
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Feedback sent successfully!');
+            document.getElementById('suggestion').value = '';
+        } else {
+            alert('Failed to send feedback. Please try again later.');
+        }
+    })
+    .catch(error => {
+        console.error('Error sending feedback:', error);
+        alert('An error occurred. Please try again later.');
+    });
+}
+
+    </script>
+</body>
+
+</html>
